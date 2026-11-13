@@ -8,7 +8,7 @@
   window.PIXEL_ID   = '1575770280970943'; // ID do Pixel da Meta
   // =======================
 
-  // Meta Pixel: só carrega depois que a pessoa aceita os cookies (LGPD).
+  // Meta Pixel: carrega assim que a página abre.
   window.carregarPixel = function(){
     if (window.fbq || /SEU_/.test(PIXEL_ID)) return;
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,7 +21,7 @@
     fbq('init', PIXEL_ID);
     fbq('track', 'PageView', { content_name: 'achados-01' });
   };
-  try { if (localStorage.getItem('cookies') === 'aceito') carregarPixel(); } catch (e) {}
+  carregarPixel();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Achados 01 | Black Friday</title>
@@ -70,11 +70,6 @@ h1 span{display:block;background:linear-gradient(180deg,#FFB3D9,var(--gold) 45%,
 @media (max-width:600px){.rail{width:36vw}.track{gap:10px}.promo{padding:7px;font-size:10px;border-radius:9px}.promo .img{height:56px;font-size:28px;margin-bottom:5px}.promo b{font-size:10.5px}.promo .por{font-size:12px}}
 @media (prefers-reduced-motion:reduce){.btn,.track{animation:none}}
 
-.cookie{position:fixed;z-index:10;left:12px;right:12px;top:12px;max-width:480px;margin:auto;background:#fff;color:#111;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px;font-size:14px;text-align:left;box-shadow:0 12px 40px rgba(0,0,0,.5)}
-.cookie[hidden]{display:none}
-.cookie div{display:flex;gap:10px}
-.cookie button{flex:1;min-height:44px;border-radius:10px;font:700 15px Manrope,sans-serif;cursor:pointer;border:2px solid #111;background:transparent}
-.cookie button[data-cookie=aceito]{background:#111;color:#fff}
 </style>
 </head>
 <body>
@@ -93,14 +88,6 @@ h1 span{display:block;background:linear-gradient(180deg,#FFB3D9,var(--gold) 45%,
   </a>
   <p class="small">Vagas limitadas · Saia quando quiser</p>
 </main>
-
-<div class="cookie" hidden>
-  <span>Usamos cookies para medir os anúncios e melhorar sua experiência.</span>
-  <div>
-    <button data-cookie="recusado">Recusar</button>
-    <button data-cookie="aceito">Aceitar</button>
-  </div>
-</div>
 
 <script>
 // Coloca o link do grupo em todos os botões
@@ -126,21 +113,6 @@ document.querySelectorAll('.js-grupo').forEach(function(a){ a.href = LINK_GRUPO;
   var tr = document.querySelectorAll('.track');
   [P.slice(0,6).concat(P.slice(6)), P.slice(6).concat(P.slice(0,6))].forEach(function(lista, i){
     var h = lista.map(card).join(''); tr[i].innerHTML = h + h; // duplicado = loop contínuo
-  });
-})();
-
-// Aviso de cookies: mostra uma vez e guarda a escolha
-(function(){
-  var box = document.querySelector('.cookie'), saved = null;
-  try { saved = localStorage.getItem('cookies'); } catch (e) {}
-  if (saved) return;
-  box.hidden = false;
-  box.addEventListener('click', function(e){
-    var v = e.target.getAttribute('data-cookie');
-    if (!v) return;
-    try { localStorage.setItem('cookies', v); } catch (err) {}
-    if (v === 'aceito') carregarPixel();
-    box.hidden = true;
   });
 })();
 
