@@ -4,166 +4,81 @@
 <meta charset="utf-8">
 <script>
   // ===================== TROQUE AQUI =====================
-  window.LINK_GRUPO = 'https://chat.whatsapp.com/KGTWkHAhr2g8S3n61Gmztn'; // link de convite do grupo
-  window.PIXEL_ID   = '1575770280970943'; // ID do Pixel da Meta
+  window.LINK_GRUPO = 'https://chat.whatsapp.com/KGTWkHAhr2g8S3n61Gmztn';
+  window.PIXEL_ID   = '1575770280970943';
+  window.MEMBROS    = '1.200';   // membros do grupo
+  window.ATUALIZADO = '15h';     // "Atualizado hoje às 15h"
 
-  // Prova social (atualize quando mudar)
-  window.MEMBROS    = '1.200';  // número de membros do grupo
-  window.ATUALIZADO = '15h';    // vira "Atualizado hoje às 15h"
-
-  // Um produto por vídeo. No anúncio, use o link com ?p=CHAVE
-  // Ex.: https://seusite.vercel.app/?p=fone  -> mostra o produto "fone"
-  // Sem ?p= na URL, mostra o primeiro da lista.
+  // Um produto por vídeo. No anúncio use ?p=CHAVE (sem ?p= mostra o primeiro)
   window.PRODUTOS = {
-    fone: {
-      nome:  'Fone Bluetooth com cancelamento de ruído', // MESMO nome do vídeo
-      de:    '199,00',            // preço "de" (riscado)
-      por:   '89,00',             // preço "por" (MESMO do vídeo)
-      foto:  '',                  // ex.: 'fone.jpg' (foto do produto). Vazio = usa o emoji
-      emoji: '🎧',
-      print: ''                   // ex.: 'print-fone.jpg' (print REAL do grupo). Vazio = gera um print automático
+    obsessed: {
+      nome: 'Body Splash Obsessed WePink',
+      sub:  'da Virginia · 200ml',
+      de:   '78,90',
+      por:  '55,23',
+      foto: 'produto.webp'
     }
-    // , outro: { nome:'...', de:'...', por:'...', foto:'', emoji:'📦', print:'' }
   };
   // ======================================================
 
-  // Meta Pixel: carrega assim que a página abre.
-  window.carregarPixel = function(){
-    if (window.fbq || /SEU_/.test(PIXEL_ID)) return;
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', PIXEL_ID);
-    fbq('track', 'PageView');
-  };
-  carregarPixel();
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Achado de hoje | Achados 01</title>
-<meta name="description" content="O produto do vídeo com o link de compra dentro do grupo Achados 01 no WhatsApp.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#070707">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="theme-color" content="#120308">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
 <style>
-:root{--bg:#070707;--ink:#fff;--muted:#C9C2B0;--pink:#FF4FA3;--green:#25D366}
 *{box-sizing:border-box;margin:0}
-body{min-height:100vh;background:radial-gradient(ellipse at 50% 20%,#2a0518 0%,var(--bg) 60%);color:var(--ink);font-family:Manrope,system-ui,sans-serif;display:flex;justify-content:center;padding:20px 16px 32px}
-main{width:100%;max-width:420px;display:flex;flex-direction:column;gap:14px;text-align:center}
-
-.tag{align-self:center;border:1px solid rgba(255,79,163,.5);color:var(--pink);font-weight:800;font-size:12px;letter-spacing:.12em;padding:6px 12px;border-radius:99px;background:rgba(255,79,163,.1)}
-h1{font-size:clamp(22px,6.4vw,28px);line-height:1.2;font-weight:800}
-h1 .preco{color:var(--green);white-space:nowrap}
-h1 small{display:block;font-size:.7em;color:var(--muted);font-weight:700;margin-top:4px}
-
-/* card do produto */
-.prod{display:flex;gap:12px;align-items:center;text-align:left;background:#151515;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:12px}
-.prod .img{flex:0 0 88px;height:88px;border-radius:12px;background:linear-gradient(135deg,#2c2c2c,#121212);display:flex;align-items:center;justify-content:center;font-size:46px;overflow:hidden}
-.prod .img img{width:100%;height:100%;object-fit:cover}
-.prod b{display:block;font-size:15px;line-height:1.3;margin-bottom:6px}
-.prod s{color:#8d877a;font-size:14px}
-.prod .por{display:block;color:var(--green);font-weight:800;font-size:24px}
-.prod .off{display:inline-block;background:var(--pink);color:#fff;font-weight:800;font-size:12px;border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:2px}
-
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:0 16px;border-radius:16px;background:linear-gradient(180deg,#34E37A,#1FB85A);color:#032411;font-weight:800;font-size:17px;text-decoration:none;box-shadow:0 10px 30px rgba(37,211,102,.35),inset 0 1px 0 rgba(255,255,255,.4)}
-.btn svg{width:22px;height:22px;flex:none}
-.prova{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--muted);font-weight:700}
-.small{font-size:12px;color:#8d877a}
-
-/* print do grupo */
-.print{background:#0B141A;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);text-align:left}
-.print>img{display:block;width:100%}
-.wa-top{display:flex;align-items:center;gap:10px;background:#202C33;padding:10px 12px;font-size:14px;font-weight:700}
-.wa-top i{width:32px;height:32px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:16px}
-.wa-top span{display:block;font-size:11px;color:#8696A0;font-weight:500}
-.wa-msg{margin:12px;max-width:85%;background:#005C4B;border-radius:10px 10px 10px 2px;padding:8px 10px;font-size:13.5px;line-height:1.4;color:#E9EDEF}
-.wa-msg a{color:#53BDEB;text-decoration:none}
-.wa-msg .h{display:block;text-align:right;font-size:11px;color:#9FC9BF;margin-top:2px}
-.legenda{font-size:12px;color:#8d877a;margin-top:-6px}
+body{min-height:100vh;background:radial-gradient(ellipse at 50% 25%,#5a0d1e 0%,#120308 65%);color:#fff;font-family:Manrope,system-ui,sans-serif;display:flex;justify-content:center;align-items:center;padding:20px 16px}
+main{width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.tag{font-size:12px;font-weight:800;letter-spacing:.12em;color:#FFB3C7}
+.foto{max-width:78%;max-height:42vh;object-fit:contain;background:#fff;border-radius:20px;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+h1{font-size:24px;line-height:1.2;font-weight:800}
+h1 small{display:block;font-size:15px;color:#E8C7CF;font-weight:700;margin-top:4px}
+.preco{display:flex;align-items:baseline;gap:10px}
+.preco s{color:#B9959E;font-size:16px}
+.preco b{font-size:34px;color:#3EE884}
+.preco i{font-style:normal;background:#fff;color:#7a0f24;font-weight:800;font-size:13px;border-radius:6px;padding:2px 7px}
+.btn{width:100%;display:flex;align-items:center;justify-content:center;min-height:58px;border-radius:16px;background:linear-gradient(180deg,#34E37A,#1FB85A);color:#032411;font-weight:800;font-size:17px;text-decoration:none;box-shadow:0 10px 30px rgba(37,211,102,.35)}
+.prova{font-size:13px;color:#E8C7CF;font-weight:700}
 </style>
 </head>
 <body>
 <main>
   <span class="tag">🎬 PRODUTO DO VÍDEO</span>
-
-  <h1>Produto do vídeo: <span class="js-nome"></span> por <span class="preco">R$ <span class="js-por"></span></span>
-    <small>Link de compra dentro do grupo</small></h1>
-
-  <div class="prod">
-    <div class="img js-img"></div>
-    <div>
-      <b class="js-nome"></b>
-      <s>R$ <span class="js-de"></span></s><span class="off js-off"></span>
-      <span class="por">R$ <span class="js-por"></span></span>
-    </div>
-  </div>
-
-  <a class="btn js-grupo" data-cta="principal" href="#" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>
-    Entrar no grupo para pegar o link
-  </a>
-
-  <div class="prova">
-    <span>👥 <span class="js-membros"></span> membros</span>
-    <span>🕒 Atualizado hoje às <span class="js-hora"></span></span>
-  </div>
-
-  <div class="print js-print"></div>
-  <p class="legenda">É assim que o achado aparece no grupo</p>
-
-  <a class="btn js-grupo" data-cta="rodape" href="#" rel="noopener">Entrar no grupo para pegar o link</a>
-  <p class="small">Grupo grátis no WhatsApp · Saia quando quiser</p>
+  <img class="foto js-foto" alt="">
+  <h1><span class="js-nome"></span><small class="js-sub"></small></h1>
+  <div class="preco"><s>R$ <span class="js-de"></span></s><b>R$ <span class="js-por"></span></b><i class="js-off"></i></div>
+  <a class="btn js-grupo" href="#">Entrar no grupo para pegar o link</a>
+  <p class="prova">👥 <span class="js-membros"></span> membros · Atualizado hoje às <span class="js-hora"></span></p>
 </main>
-
 <script>
 (function(){
-  // Escolhe o produto pela URL (?p=chave) ou usa o primeiro
-  var chave = new URLSearchParams(location.search).get('p');
-  var lista = window.PRODUTOS;
-  var p = lista[chave] || lista[Object.keys(lista)[0]];
-
+  var L = PRODUTOS, p = L[new URLSearchParams(location.search).get('p')] || L[Object.keys(L)[0]];
   function num(v){ return parseFloat(String(v).replace(/\./g,'').replace(',','.')); }
+  function fill(s, t){ document.querySelectorAll(s).forEach(function(el){ el.textContent = t; }); }
   var off = Math.round((1 - num(p.por)/num(p.de)) * 100);
-  function fill(sel, txt){ document.querySelectorAll(sel).forEach(function(el){ el.textContent = txt; }); }
+  fill('.js-nome', p.nome); fill('.js-sub', p.sub || '');
+  fill('.js-de', p.de); fill('.js-por', p.por); fill('.js-off', off > 0 ? '-' + off + '%' : '');
+  fill('.js-membros', MEMBROS); fill('.js-hora', ATUALIZADO);
+  var f = document.querySelector('.js-foto'); f.src = p.foto; f.alt = p.nome;
+  document.title = p.nome + ' por R$ ' + p.por + ' | Achados 01';
 
-  fill('.js-nome', p.nome);
-  fill('.js-de', p.de);
-  fill('.js-por', p.por);
-  fill('.js-off', off > 0 ? '-' + off + '%' : '');
-  fill('.js-membros', MEMBROS);
-  fill('.js-hora', ATUALIZADO);
-  document.title = 'Achado de hoje: ' + p.nome + ' por R$ ' + p.por;
-
-  var img = document.querySelector('.js-img');
-  if (p.foto) { var i = new Image(); i.src = p.foto; i.alt = p.nome; img.appendChild(i); }
-  else img.textContent = p.emoji || '🛍️';
-
-  // Print do grupo: imagem real, se tiver; senão gera um no estilo WhatsApp
-  var pr = document.querySelector('.js-print');
-  if (p.print) {
-    var im = new Image(); im.src = p.print; im.alt = 'Print do grupo com o ' + p.nome; pr.appendChild(im);
-  } else {
-    pr.innerHTML =
-      '<div class="wa-top"><i>🛍️</i><div>Achados 01<span>' + MEMBROS + ' membros</span></div></div>' +
-      '<div class="wa-msg">' + (p.emoji || '🛍️') + ' <b></b><br>De <s>R$ ' + p.de + '</s> por <b>R$ ' + p.por + '</b>' +
-      (off > 0 ? ' (-' + off + '%)' : '') + '<br>🔗 <a>link de compra aqui</a><span class="h">' + ATUALIZADO + '</span></div>';
-    pr.querySelector('.wa-msg b').textContent = p.nome;
-  }
-
-  // Botões: dispara CompleteRegistration e só depois abre o grupo
+  // Clique: dispara CompleteRegistration e depois abre o grupo
   document.querySelectorAll('.js-grupo').forEach(function(a){
     a.href = LINK_GRUPO;
     a.addEventListener('click', function(e){
       e.preventDefault();
-      if (window.fbq) fbq('track', 'CompleteRegistration', {
-        content_name: p.nome, cta: a.dataset.cta
-      });
-      // pequena espera para o evento sair antes de trocar para o WhatsApp
+      if (window.fbq) fbq('track', 'CompleteRegistration', { content_name: p.nome });
       setTimeout(function(){ location.href = LINK_GRUPO; }, 300);
     });
   });
