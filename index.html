@@ -39,12 +39,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Manrope:wght@500;600;700;800&display=swap">
 <style>
-:root{--gold:#D9B46C;--rose:#D9BFC6;--green:#25D366}
+:root{--gold:#D9B46C;--muted:#A8A1A3;--green:#25D366}
 *{box-sizing:border-box;margin:0}
-body{min-height:100vh;overflow-x:hidden;background:radial-gradient(circle at 50% 32%,#4A0C1C 0%,#1A0509 52%,#0C0204 100%);color:#fff;font-family:Manrope,system-ui,sans-serif;display:flex;justify-content:center;align-items:center;padding:18px 16px 24px}
+body{min-height:100vh;overflow-x:hidden;background:radial-gradient(circle at 50% 32%,#2A0A12 0%,#0E0507 60%,#080405 100%);color:#fff;font-family:Manrope,system-ui,sans-serif;display:flex;justify-content:center;align-items:center;padding:18px 16px 24px}
 
 /* promoções passando no fundo */
-.rail{position:fixed;top:0;bottom:0;width:min(34vw,240px);overflow:hidden;opacity:.22;filter:blur(1.4px);pointer-events:none;z-index:0;
+.rail{position:fixed;top:0;bottom:0;width:min(34vw,240px);overflow:hidden;opacity:.16;filter:grayscale(1) blur(1.4px);pointer-events:none;z-index:0;
   -webkit-mask-image:linear-gradient(transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(transparent,#000 15%,#000 85%,transparent)}
 .rail.l{left:-5vw;transform:rotate(-4deg)}
 .rail.r{right:-5vw;transform:rotate(4deg)}
@@ -52,33 +52,33 @@ body{min-height:100vh;overflow-x:hidden;background:radial-gradient(circle at 50%
 .rail.r .track{animation-name:desce;animation-duration:46s}
 @keyframes sobe{to{transform:translateY(-50%)}}
 @keyframes desce{from{transform:translateY(-50%)}to{transform:translateY(0)}}
-.promo{background:#2A0E16;border:1px solid rgba(217,180,108,.25);border-radius:12px;padding:9px;font-size:11px;line-height:1.35;color:#F3E3E7}
-.promo .img{height:64px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:6px;background:#160408}
+.promo{background:#1A1A1A;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:9px;font-size:11px;line-height:1.35;color:#DDD}
+.promo .img{height:64px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:6px;background:#111}
 .promo b{display:block;font-size:11.5px}
-.promo s{color:#B8959E}
-.promo .por{color:var(--green);font-weight:800;font-size:13px}
-.fade{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 60% 62% at 50% 50%,rgba(12,2,4,.9),rgba(12,2,4,.3) 75%,transparent)}
+.promo s{color:#888}
+.promo .por{color:#DDD;font-weight:800;font-size:13px}
+.fade{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 60% 62% at 50% 50%,rgba(8,4,5,.92),rgba(8,4,5,.35) 75%,transparent)}
 
 main{position:relative;z-index:2;width:100%;max-width:380px;display:flex;flex-direction:column;align-items:center;text-align:center}
-.tag{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;border:1px solid var(--gold);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.12em;background:rgba(12,2,4,.5)}
+.tag{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:#EDEDED;font-size:11px;font-weight:700;letter-spacing:.14em}
 .tag svg{width:14px;height:14px}
 
 .palco{position:relative;width:280px;height:min(40vh,320px);margin-top:14px;display:flex;align-items:center;justify-content:center}
-.palco::before{content:"";position:absolute;width:82%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(217,180,108,.45);background:radial-gradient(circle,rgba(255,90,130,.28),rgba(255,90,130,0) 68%)}
+.palco::before{content:"";position:absolute;width:82%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(217,180,108,.3);background:radial-gradient(circle,rgba(255,255,255,.07),rgba(255,255,255,0) 68%)}
 .palco img{position:relative;height:100%;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 22px 26px rgba(0,0,0,.7))}
 
-.tipo{margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.28em;color:#E6C9D0}
-h1{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:56px;line-height:1;color:var(--gold)}
-.sub{font-size:13px;font-weight:600;color:var(--rose);margin-top:4px}
+.tipo{margin-top:12px;font-size:11px;font-weight:700;letter-spacing:.28em;color:var(--muted)}
+h1{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:52px;line-height:1;color:var(--gold)}
+.sub{font-size:13px;font-weight:500;color:var(--muted);margin-top:4px}
 
 /* bloco de preço + botão, bem juntos */
-.oferta{width:100%;margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:2px}
-.de{font-size:15px;color:#B8959E}
-.por{font-size:44px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
-.desc{margin-top:4px;background:var(--gold);color:#2A0610;font-size:13px;font-weight:800;padding:5px 10px;border-radius:8px}
+.oferta{width:100%;margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.de{font-size:15px;color:var(--muted)}
+.por{font-size:48px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.desc{margin-top:2px;color:var(--gold);font-size:14px;font-weight:700}
 .btn{width:100%;margin-top:12px;min-height:60px;display:flex;align-items:center;justify-content:center;gap:10px;border-radius:18px;background:var(--green);color:#04230F;font-size:17px;font-weight:800;text-decoration:none;box-shadow:0 12px 30px rgba(37,211,102,.35);animation:pulse 1.8s infinite}
 .btn svg{width:24px;height:24px;flex:none}
-.prova{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:13px;font-weight:600;color:var(--rose)}
+.prova{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;font-weight:500;color:var(--muted)}
 .prova svg{width:14px;height:14px}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
 @media (prefers-reduced-motion:reduce){.btn,.track{animation:none}}
